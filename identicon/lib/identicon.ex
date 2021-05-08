@@ -1,5 +1,16 @@
 defmodule Identicon do
 
+@moduledoc """
+App for generating identicons from random strings
+"""
+@doc """
+  Application entrypoint and pipeline
+
+  ## Examples
+
+    iex> Identicon.main("banana")
+    :ok
+"""
   def main(input) do
     input
     |> hash_input
@@ -14,7 +25,7 @@ defmodule Identicon do
   def save_image(image, input) do
     File.write("#{input}.png", image)
   end
-  
+
 
   def draw_image(%Identicon.Image{color: color, pixel_map: pixel_map}) do
     image = :egd.create(250, 250)
